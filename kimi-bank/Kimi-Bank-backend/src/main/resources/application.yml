@@ -2,13 +2,12 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: kimibank-core
   datasource:
-    url: jdbc:postgresql://localhost:5432/kimibank
-    username: kimibank
-    password: kimibank
-    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name:
+org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: validate   # schema.sql is the source of truth
