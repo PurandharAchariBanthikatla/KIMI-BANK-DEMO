@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kimibank-postgres
+    environment:
+      POSTGRES_DB: kimibank
+      POSTGRES_USER: kimibank
+      POSTGRES_PASSWORD: kimibank
+    ports:
+      - "5432:5432"
+    volumes:
+      - kimibank_pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+
+volumes:
+  kimibank_pgdata:
