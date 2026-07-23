@@ -1,20 +1,24 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
+  application:
+    name: kimibank-core
+
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
-    driver-class-name:
-org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: validate   # schema.sql is the source of truth
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
     open-in-view: false
+
   sql:
     init:
       mode: never
@@ -24,11 +28,11 @@ kimibank:
     secret: "CHANGE_ME_32_BYTE_MIN_SECRET_KEY_FOR_DEV_ONLY"
     access-token-minutes: 15
     refresh-token-days: 30
+
   otp:
     length: 6
     ttl-seconds: 300
     max-attempts: 5
-    # Dev mode: OTP is logged instead of sent via SMS gateway.
     dev-mode: true
 
 logging:
