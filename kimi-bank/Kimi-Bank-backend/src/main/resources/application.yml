@@ -1,14 +1,14 @@
 server:
-  port: ${PORT:8080}
+  port: 8080
 
 spring:
   application:
     name: kimibank-core
 
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/kimibank
+    username: postgres
+    password: your_postgresql_password
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -17,6 +17,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
 
   sql:
